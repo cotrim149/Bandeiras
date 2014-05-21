@@ -224,6 +224,95 @@
     [self.view addSubview:viewBackground];
 }
 
+-(void)makeGreeceFlag{
+    UIImageView *backgroundView = [self makeRectangleViewWithOriginX:20
+                                                          andOriginY:100
+                                                               width:(self.view.bounds.size.width - 50)
+                                                              height:(self.view.bounds.size.height - 130)
+                                                        andFillColor:[UIColor whiteColor]
+                                                       andBoardColor:[UIColor blackColor]];
+
+    
+    UIImageView *blueRectangle = [self
+                                  makeRectangleViewWithOriginX:5*(self.view.bounds.size.width - 50)/9
+                                                                andOriginY:100
+                                                                     width:(self.view.bounds.size.width-40)/2
+                                                                    height:(self.view.bounds.size.height - 130)/4
+                                                              andFillColor:[UIColor blueColor]
+                                                             andBoardColor:[UIColor blueColor]];
+    
+    UIImageView *blueCentralRectangle = [self
+                                         makeRectangleViewWithOriginX:5*(self.view.bounds.size.width - 50)/9
+                                                          andOriginY:100
+                                                               width:(self.view.bounds.size.width - 50)/9
+                                                              height:(self.view.bounds.size.height - 130)
+                                                        andFillColor:[UIColor blueColor]
+                                                       andBoardColor:[UIColor blueColor]];
+
+    UIImageView *blueFirstRectangle = [self
+                                       makeRectangleViewWithOriginX:(self.view.bounds.size.width - 130)/9
+                                       andOriginY:100
+                                       width:(self.view.bounds.size.width - 50)/9
+                                       height:(self.view.bounds.size.height - 130)
+                                       andFillColor:[UIColor blueColor]
+                                       andBoardColor:[UIColor blueColor]];
+
+    UIImageView *blueSecondRectangle = [self
+                                       makeRectangleViewWithOriginX:3*(self.view.bounds.size.width - 60)/9
+                                       andOriginY:100
+                                       width:(self.view.bounds.size.width - 50)/9
+                                       height:(self.view.bounds.size.height - 130)
+                                       andFillColor:[UIColor blueColor]
+                                       andBoardColor:[UIColor blueColor]];
+
+    UIImageView *blueFourthRectangle = [self
+                                        makeRectangleViewWithOriginX:7*(self.view.bounds.size.width - 50)/9
+                                        andOriginY:100
+                                        width:(self.view.bounds.size.width - 50)/9
+                                        height:(self.view.bounds.size.height - 130)
+                                        andFillColor:[UIColor blueColor]
+                                        andBoardColor:[UIColor blueColor]];
+
+    UIImageView *blueFifthRectangle = [self
+                                        makeRectangleViewWithOriginX:9*(self.view.bounds.size.width - 50)/9
+                                        andOriginY:100
+                                        width:(self.view.bounds.size.width - 50)/9
+                                        height:(self.view.bounds.size.height - 130)
+                                        andFillColor:[UIColor blueColor]
+                                        andBoardColor:[UIColor blueColor]];
+
+    UIImageView *whiteHorizontallRectangle = [self
+                                       makeRectangleViewWithOriginX:7*(self.view.bounds.size.width - 50)/9
+                                       andOriginY:100
+                                       width:(self.view.bounds.size.width - 50)/9
+                                       height:(self.view.bounds.size.height - 130)/4
+                                       andFillColor:[UIColor whiteColor]
+                                       andBoardColor:[UIColor whiteColor]];
+
+    UIImageView *whiteVerticalRectangle = [self
+                                              makeRectangleViewWithOriginX:5*(self.view.bounds.size.width - 50)/9
+                                              andOriginY:140
+                                              width:(self.view.bounds.size.height - 130)/2
+                                              height:(self.view.bounds.size.width - 50)/9
+                                              andFillColor:[UIColor whiteColor]
+                                              andBoardColor:[UIColor whiteColor]];
+    
+    
+    VCLView *viewBackground = [[VCLView alloc] init];
+    
+    [viewBackground addSubview:backgroundView];
+    [viewBackground addSubview:blueCentralRectangle];
+    [viewBackground addSubview:blueFirstRectangle];
+    [viewBackground addSubview:blueSecondRectangle];
+    [viewBackground addSubview:blueFourthRectangle];
+    [viewBackground addSubview:blueFifthRectangle];
+    [viewBackground addSubview:blueRectangle];
+    [viewBackground addSubview:whiteHorizontallRectangle];
+    [viewBackground addSubview:whiteVerticalRectangle];
+    
+    [self.view addSubview:viewBackground];
+}
+
 -(IBAction)updateSlider:(id)sender{
     
     self.slider = (UISlider*)sender;
@@ -235,6 +324,7 @@
         case 1:
             break;
         case 2:
+            [self makeGreeceFlag];
             break;
         case 3:
             [self makeChileFlag];
