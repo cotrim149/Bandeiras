@@ -36,7 +36,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIImageView*) makeRectangleViewWithOriginX:(int) originX andOriginY:(int) originY width:(int) width height: (int) height andFillColor:(UIColor *)color{
+- (UIImageView*) makeRectangleViewWithOriginX:(int) originX andOriginY:(int) originY width:(int) width height: (int) height andFillColor:(UIColor *)color andBoardColor:(UIColor*)corBorda{
     
     CGRect background = CGRectMake(originX, originY,
                                    width,
@@ -46,7 +46,7 @@
     UIGraphicsBeginImageContext(self.view.bounds.size);
     
     CGContextRef contextBackground = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(contextBackground, [UIColor blackColor].CGColor);
+    CGContextSetStrokeColorWithColor(contextBackground, corBorda.CGColor);
     CGContextSetFillColorWithColor(contextBackground, color.CGColor);
     [backgroundImage fill];
     [backgroundImage stroke];
@@ -118,22 +118,27 @@
     UIImageView *backgroundView = [self makeRectangleViewWithOriginX:20
                                                            andOriginY:100
                                                               width:(self.view.bounds.size.width - 50)
-                                                              height:(self.view.bounds.size.height - 130) andFillColor:[UIColor whiteColor]];
+                                                              height:(self.view.bounds.size.height - 130) andFillColor:[UIColor whiteColor]andBoardColor:[UIColor blackColor]];
+    
     UIImageView *blueRectangle = [self makeRectangleViewWithOriginX:20
                                                          andOriginY:100
                                                               width:(self.view.bounds.size.width - 50)
                                                              height:(self.view.bounds.size.height- 130)/3
-                                                       andFillColor:[UIColor blueColor]];
+                                                       andFillColor:[UIColor blueColor]
+                                                      andBoardColor:[UIColor blueColor]];
+    
     UIImageView *whiteRectangle = [self makeRectangleViewWithOriginX:20
                                                          andOriginY:100 + ((self.view.bounds.size.height- 130)/3)
                                                               width:(self.view.bounds.size.width - 50)
                                                              height:(self.view.bounds.size.height- 130)/3
-                                                       andFillColor:[UIColor whiteColor]];
+                                                        andFillColor:[UIColor whiteColor]
+                                                       andBoardColor:[UIColor whiteColor]];
+    
     UIImageView *redRectangle = [self makeRectangleViewWithOriginX:20
                                                           andOriginY:100 + (2*(self.view.bounds.size.height- 130)/3)
                                                                width:(self.view.bounds.size.width - 50)
                                                               height:(self.view.bounds.size.height- 130)/3
-                                                        andFillColor:[UIColor redColor]];
+                                                        andFillColor:[UIColor redColor] andBoardColor:[UIColor redColor]];
     
     VCLView *viewBackground = [[VCLView alloc] init];
     
@@ -149,7 +154,35 @@
 }
 
 - (void) makeSwitzerlandFlag{
+    UIImageView *backgroundView = [self makeRectangleViewWithOriginX:20
+                                                          andOriginY:100
+                                                               width:(self.view.bounds.size.width - 50)
+                                                              height:(self.view.bounds.size.height - 130)
+                                                        andFillColor:[UIColor redColor]
+                                                       andBoardColor:[UIColor blackColor]];
     
+    UIImageView *horizontalRectangle = [self makeRectangleViewWithOriginX:(self.view.center.x) - 20
+                                                          andOriginY:100
+                                                               width:40
+                                                              height:(self.view.bounds.size.height - 130)
+                                                        andFillColor:[UIColor whiteColor]
+                                                            andBoardColor:[UIColor whiteColor]];
+    
+    UIImageView *verticalRectangle = [self makeRectangleViewWithOriginX:20
+                                                             andOriginY:(self.view.center.y - 50)
+                                                                  width:(self.view.bounds.size.width - 50)
+                                                                 height:40
+                                                           andFillColor:[UIColor whiteColor]
+                                                          andBoardColor:[UIColor whiteColor]];
+    
+    
+    VCLView *viewBackground = [[VCLView alloc] init];
+    
+    [viewBackground addSubview:backgroundView];
+    [viewBackground addSubview:horizontalRectangle];
+    [viewBackground addSubview:verticalRectangle];
+    
+    [self.view addSubview:viewBackground];
 }
 
 -(IBAction)updateSlider:(id)sender{

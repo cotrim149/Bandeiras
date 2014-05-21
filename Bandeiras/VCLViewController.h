@@ -11,10 +11,6 @@
 @interface VCLViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 
-- (void)drawRectangleWithOriginX:(int) originX
-                      andOriginY:(int) originY
-                       andHeight:(int) height
-                        andWidth:(int) width;
 
 -(IBAction)updateSlider:(id)sender;
 @end
