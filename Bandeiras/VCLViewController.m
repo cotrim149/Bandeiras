@@ -185,6 +185,45 @@
     [self.view addSubview:viewBackground];
 }
 
+-(void)makeChileFlag{
+    UIImageView *backgroundView = [self makeRectangleViewWithOriginX:20
+                                                          andOriginY:100
+                                                               width:(self.view.bounds.size.width - 50)
+                                                              height:(self.view.bounds.size.height - 130)
+                                                        andFillColor:[UIColor whiteColor]
+                                                       andBoardColor:[UIColor blackColor]];
+
+    UIImageView *redRectangle = [self makeRectangleViewWithOriginX:20
+                                                          andOriginY:100
+                                                               width:(self.view.bounds.size.width-50)/2
+                                                              height:(self.view.bounds.size.height - 130)
+                                                        andFillColor:[UIColor redColor]
+                                                       andBoardColor:[UIColor redColor]];
+    
+    UIImageView *blueRectangle = [self
+                                  makeRectangleViewWithOriginX:(20 + (self.view.bounds.size.width-50)/2)
+                                                        andOriginY:100
+                                                             width:(self.view.bounds.size.width-50)/2
+                                                            height:(self.view.bounds.size.height - 130)/3
+                                                      andFillColor:[UIColor blueColor]
+                                                     andBoardColor:[UIColor blueColor]];
+    
+    
+    
+
+    
+    
+    
+    
+    VCLView *viewBackground = [[VCLView alloc] init];
+    
+    [viewBackground addSubview:backgroundView];
+    [viewBackground addSubview:redRectangle];
+    [viewBackground addSubview:blueRectangle];
+
+    [self.view addSubview:viewBackground];
+}
+
 -(IBAction)updateSlider:(id)sender{
     
     self.slider = (UISlider*)sender;
@@ -198,6 +237,7 @@
         case 2:
             break;
         case 3:
+            [self makeChileFlag];
             break;
         case 4:
             [self makeSwitzerlandFlag];
